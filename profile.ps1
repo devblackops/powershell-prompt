@@ -49,7 +49,7 @@ $script:glyphs = @{
     normal        = "$($color.green)`u{2714}$($color.reset)"
     error         = "$($color.red)`u{f00d}$($color.reset)"
     warning       = "$($color.yellow)`u{f071}$($color.reset)"
-    fowardSlash   = " $($color.orange)`u{e216}$($color.reset) "
+    forwardSlash   = " $($color.orange)`u{e216}$($color.reset) "
 }
 
 $global:GitPromptSettings.BeforeStatus = $color.blue + $glyphs.git + "`e[93m[`e[39m"
@@ -132,8 +132,8 @@ function prompt {
     }
 
     # Pretty slashes
-    $dispDir = $dispDir.Replace('/', $glyphs.fowardSlash)
-    $dispDir = $dispDir.Replace('\', $glyphs.fowardSlash)
+    $dispDir = $dispDir.Replace('/', $glyphs.forwardSlash)
+    $dispDir = $dispDir.Replace('\', $glyphs.forwardSlash)
 
     $glyphs.stackoverflow + ' ' + $dispDir + $(Write-VcsStatus) + " $lastExit $lastCmdTime" + [Environment]::NewLine + "I $($glyphs.heart) PS $($glyphs.rightArrow) "
 }
