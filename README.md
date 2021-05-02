@@ -8,7 +8,7 @@ This prompt function and related settings are just a small portion of my PowerSh
 
 ## Requirements
 
-> This prompt **requires** a [Nerd Font](https://www.nerdfonts.com/) to be installed and selected in order to show glyphs/icons correctly. If you don't have a nerd font selected, icons will show as a empty box.
+> This prompt **requires** a [Nerd Font](https://www.nerdfonts.com/) to be installed and selected in order to show glyphs/icons correctly. If you don't have a nerd font selected, icons will show as an empty box.
 
 ### Modules used
 
