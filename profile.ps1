@@ -11,13 +11,16 @@ Set-PSReadLineKeyHandler -Chord Shift+Tab -Function MenuComplete
 Set-PSReadLineKeyHandler -Chord Ctrl+b -Function BackwardWord
 Set-PSReadLineKeyHandler -Chord Ctrl+f -Function ForwardWord
 
-if ($IsMacOS) {
+if ($IsMacOS -or $IsLinux) {
+    $pathSeparator = '/'
     try {
         Import-UnixCompleters
     } catch {
         Install-Module Microsoft.PowerShell.UnixCompletes -Repository PSGallery -AcceptLicense -Force
         Import-UnixCompleters
     }
+} else {
+    $pathSeparator = '\'
 }
 
 $script:commonDirs = @{
@@ -108,7 +111,7 @@ function prompt {
     # Truncate path if too long and just show the last part of it
     $maxPathLength = 48
     if ($dispDir.Length -gt $maxPathLength) {
-        $pathParts = ($dispDir -split '/') | Where-Object {-not [string]::IsNullOrEmpty($_)} | ForEach-Object {
+        $pathParts = ($dispDir -split $pathSeparator) | Where-Object {-not [string]::IsNullOrEmpty($_)} | ForEach-Object {
             @{
                 name   = $_
                 length = $_.Length
